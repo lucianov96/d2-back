@@ -1,0 +1,65 @@
+spring:
+  application:
+    name: @project.name@
+    description: @project.description@
+    version: @project.version@
+  profiles:
+    active: ${PDB_SERVICE_ENV:development}
+  webflux:
+    base-path: /api
+
+info:
+  app:
+    name: ${spring.application.name}
+    description: ${spring.application.description}
+    version: ${spring.application.version}
+  env:
+    profile: ${spring.profiles.active}
+
+config-map:
+  environment: ${spring.profiles.active}
+  security:
+    apiUsers:
+      clienteEjemplo: "1234"
+      clienteEjemplo2: "5678"
+
+graphql:
+  packages: "com.d2back.graphql"
+  endpoint: "api/graphql"
+  federation:
+    enabled: true
+  playground:
+    enabled: true
+    endpoint: "api/playground"
+  sdl:
+    enabled: true
+    endpoint: "api/sdl"
+
+management:
+  endpoints:
+    enabled-by-default: false
+    web:
+      cors:
+        allowed-origins: "*.ar.bsch"
+        allowed-methods: GET,HEAD
+      exposure:
+        include: "*"
+      base-path: "/metrics"
+  endpoint:
+    info:
+      enabled: true
+    health:
+      enabled: true
+    metrics:
+      enabled: true
+    prometheus:
+      enabled: true
+  metrics:
+    export:
+      prometheus:
+        enabled: true
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
