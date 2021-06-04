@@ -1,4 +1,6 @@
 package com.d2back.repository.model
 
-class MagicItem {
-}
+abstract class MagicItem(
+    open val id: Int,
+    open val name: String
+)

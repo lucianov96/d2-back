@@ -1,7 +1,8 @@
 package com.d2back.repository.model
 
-data class UniqueItem(
+data class Runeword(
     override val id: Int,
     override val name: String,
-    val idNormalItem: Int
+    val type: String,
+    val runes: List<String>
 ): MagicItem(id, name)
