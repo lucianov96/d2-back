@@ -11,6 +11,7 @@ import reactor.kotlin.core.publisher.toMono
 class ExampleEntityService {
 
     fun get(exampleEntityId: String): Mono<ExampleEntity> {
+
         return Mono.deferWithContext { reactiveCtx ->
             val bffContext = reactiveCtx.bffContext()
             ExampleEntity(bffContext.correlationId, "dou").toMono()
