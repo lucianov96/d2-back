@@ -1,0 +1,9 @@
+-------------------------------------------------------------------------------
+Test set: com.d2back.unit.service.ExampleEntityServiceTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 1, Skipped: 0, Time elapsed: 0.806 s <<< FAILURE! - in com.d2back.unit.service.ExampleEntityServiceTest
+get with existing id  Time elapsed: 0.014 s  <<< ERROR!
+io.mockk.MockKException: 
+No matching constructors found:
+constructor(normalItemsDAO : com.d2back.repository.dao.NormalItemsDAO = <not able to lookup>)
+
