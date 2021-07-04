@@ -11,7 +11,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate
 import org.springframework.http.ResponseEntity
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-internal class ExampleExternalJWTSecuredQueryTest {
+internal class ItemQueryTest {
 
     @Autowired
     private lateinit var restTemplate: TestRestTemplate

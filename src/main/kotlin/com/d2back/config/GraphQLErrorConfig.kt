@@ -18,8 +18,10 @@ class GraphQLErrorConfig(val configMap: ConfigMap) : GraphQLAutoConfiguration() 
 
         override fun onException(params: DataFetcherExceptionHandlerParameters): DataFetcherExceptionHandlerResult {
             val bffContext = params.dataFetchingEnvironment.getContext() as BFFContext
+            println(params.exception)
 
-            return DataFetcherExceptionHandlerResult.Builder().build()
+            return DataFetcherExceptionHandlerResult.Builder()
+                .build()
         }
     }
 }
