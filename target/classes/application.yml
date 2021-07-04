@@ -7,6 +7,11 @@ spring:
     active: ${PDB_SERVICE_ENV:development}
   webflux:
     base-path: /api
+  data:
+    mongodb:
+      uri: "mongodb://localhost:27017/d2back?readPreference=primary&appname=MongoDB%20Compass&ssl=false"
+  main:
+    allow-bean-definition-overriding: true
 
 info:
   app:

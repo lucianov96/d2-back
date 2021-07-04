@@ -5,4 +5,4 @@ data class Runeword(
     override val name: String,
     val type: String,
     val runes: List<String>
-): MagicItem(id, name)
+) : MagicItem(id, name)

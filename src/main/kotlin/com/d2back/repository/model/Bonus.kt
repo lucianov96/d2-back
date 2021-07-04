@@ -2,7 +2,7 @@ package com.d2back.repository.model
 
 import com.d2back.repository.enum.BonusType
 
-data class Bonus (
+data class Bonus(
     val id: Int,
     val idItem: Int?,
     val idSet: Int?,

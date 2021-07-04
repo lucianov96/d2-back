@@ -4,7 +4,7 @@ import com.d2back.repository.enum.CharacterClass
 import com.d2back.repository.enum.Difficulty
 import com.d2back.repository.enum.ItemType
 
-data class NormalItem (
+data class NormalItem(
     val id: Int,
     val name: String,
     val type: ItemType,

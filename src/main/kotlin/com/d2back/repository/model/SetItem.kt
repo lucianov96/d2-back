@@ -5,4 +5,4 @@ data class SetItem(
     override val name: String,
     val idNormalItem: Int,
     val idSet: Int
-): MagicItem(id, name)
+) : MagicItem(id, name)
