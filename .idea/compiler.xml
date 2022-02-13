@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="d2back" target="11" />
+      <module name="d2back" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
