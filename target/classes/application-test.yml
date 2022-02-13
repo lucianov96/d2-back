@@ -1,6 +1,0 @@
-config-map:
-  security:
-    apiUsers:
-      clienteEjemplo: "1234"
-      clienteEjemplo2: "5678"
-

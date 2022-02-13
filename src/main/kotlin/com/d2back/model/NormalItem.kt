@@ -2,20 +2,61 @@ package com.d2back.model
 
 import com.d2back.model.enum.CharacterClass
 import com.d2back.model.enum.Difficulty
+import com.d2back.model.enum.Difficulty.normal
 import com.d2back.model.enum.ItemType
+import com.d2back.model.enum.ItemType.crossbow
+import org.hibernate.annotations.DynamicUpdate
+import org.hibernate.envers.Audited
+import javax.persistence.CascadeType
+import javax.persistence.Column
+import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
+import javax.persistence.Id
+import javax.persistence.OneToMany
+import javax.persistence.OneToOne
+import javax.persistence.Table
 
-data class NormalItem(
-    val id: Int,
-    val name: String,
-    val type: ItemType,
-    val level: Int,
-    val defenseMin: Int?,
-    val defenseMax: Int?,
-    val durability: Int,
-    val characterClass: CharacterClass?,
-    val difficulty: Difficulty,
-    val damage1hMin: ModifierBonus?,
-    val damage2hMin: ModifierBonus?,
-    val damage1hMax: ModifierBonus?,
-    val damage2hMax: ModifierBonus?
+@Table(
+    name = "normal_item",
 )
+@Entity
+@Audited
+@DynamicUpdate
+class NormalItem {
+
+    @Id
+    @Column(name = "id_item", updatable = false, nullable = false)
+    var id: Int = 0
+
+    @Column(name = "normal_item_name", updatable = true)
+    var name: String = ""
+
+    @Column(name = "item_type", updatable = true)
+    @Enumerated(EnumType.STRING)
+    var type: ItemType = crossbow
+
+    @Column(name = "level", updatable = true)
+    var level: Int = 0
+
+    @Column(name = "durability", updatable = true)
+    var durability: Int = 0
+
+    @Column(name = "character_class", updatable = true)
+    @Enumerated(EnumType.STRING)
+    var characterClass: CharacterClass? = null
+
+    @Column(name = "difficulty", updatable = true)
+    @Enumerated(EnumType.STRING)
+    var difficulty: Difficulty = normal
+
+    @OneToOne(mappedBy = "normalItem")
+    var setItem: SetItem? = null
+
+    @OneToOne(mappedBy = "normalItem")
+    var uniqueItem: UniqueItem? = null
+
+    @OneToMany(mappedBy = "normalItem", cascade = [CascadeType.ALL])
+    var modifierBonuses: List<ModifierBonus> = mutableListOf()
+
+}
