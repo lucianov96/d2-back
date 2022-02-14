@@ -20,11 +20,11 @@ class SetItem: MagicItem() {
 
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "normal_item_id", referencedColumnName = "id_item")
-    var normalItem: NormalItem? = null
+    var normalItem: NormalItem = NormalItem()
 
     @ManyToOne
     @JoinColumn(name = "id_set")
-    var set: Set? = null
+    var set: Set = Set()
 
     @OneToMany(mappedBy = "setItem", cascade = [CascadeType.ALL])
     var bonuses: List<Bonus> = mutableListOf()

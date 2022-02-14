@@ -19,7 +19,7 @@ class UniqueItem: MagicItem() {
 
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "normal_item_id", referencedColumnName = "id_item")
-    var normalItem: NormalItem? = null
+    var normalItem: NormalItem = NormalItem()
 
     @OneToMany(mappedBy = "uniqueItem", cascade = [CascadeType.ALL])
     var bonuses: List<Bonus> = mutableListOf()
