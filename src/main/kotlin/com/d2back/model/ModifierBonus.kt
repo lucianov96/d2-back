@@ -59,5 +59,4 @@ class ModifierBonus {
     @ManyToOne
     @JoinColumn(name = "id_normal_item")
     var normalItem: NormalItem? = null
-
 }

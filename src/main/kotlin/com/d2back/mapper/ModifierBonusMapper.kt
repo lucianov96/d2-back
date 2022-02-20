@@ -16,5 +16,4 @@ import org.mapstruct.ReportingPolicy
 abstract class ModifierBonusMapper {
 
     abstract fun toDto(modifierBonus: ModifierBonus?): ModifierBonusDto?
-
 }

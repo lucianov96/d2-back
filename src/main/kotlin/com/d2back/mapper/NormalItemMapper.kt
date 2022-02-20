@@ -22,12 +22,9 @@ abstract class NormalItemMapper {
 
     fun toDto(normalItem: NormalItem): NormalItemDto {
 
-        val defenseMin = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.defenseMin }
-        val defenseMax = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.defenseMax }
-        val damage1hMin = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.damage1hMin }
-        val damage1hMax = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.damage1hMax }
-        val damage2hMin = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.damage2hMin }
-        val damage2hMax = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.damage2hMax }
+        val defense = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.defense }
+        val damage1h = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.damage1h }
+        val damage2h = normalItem.modifierBonuses.find { it.normalItemValue == NormalItemValue.damage2h }
 
         return NormalItemDto(
             normalItem.id,
@@ -37,13 +34,9 @@ abstract class NormalItemMapper {
             normalItem.durability,
             normalItem.characterClass,
             normalItem.difficulty,
-            modifierBonusMapper.toDto(defenseMin),
-            modifierBonusMapper.toDto(defenseMax),
-            modifierBonusMapper.toDto(damage1hMin),
-            modifierBonusMapper.toDto(damage1hMax),
-            modifierBonusMapper.toDto(damage2hMin),
-            modifierBonusMapper.toDto(damage2hMax),
+            modifierBonusMapper.toDto(defense),
+            modifierBonusMapper.toDto(damage1h),
+            modifierBonusMapper.toDto(damage2h),
         )
     }
-
 }

@@ -58,5 +58,4 @@ class NormalItem {
 
     @OneToMany(mappedBy = "normalItem", cascade = [CascadeType.ALL])
     var modifierBonuses: List<ModifierBonus> = mutableListOf()
-
 }

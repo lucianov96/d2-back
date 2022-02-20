@@ -4,8 +4,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ServiceApplication
+class D2BackApplication
 
-fun main() {
-    runApplication<ServiceApplication>()
-}
+fun main(args: Array<String>) { runApplication<D2BackApplication>(*args) }

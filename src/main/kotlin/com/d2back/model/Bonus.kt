@@ -17,7 +17,7 @@ import javax.persistence.OneToMany
 import javax.persistence.Table
 
 @Table(
-        name = "modifier_bonus",
+    name = "modifier_bonus",
 )
 @Entity
 @Audited
@@ -53,5 +53,4 @@ class Bonus {
 
     @OneToMany(mappedBy = "bonus", cascade = [CascadeType.ALL])
     var modifierBonuses: List<ModifierBonus> = mutableListOf()
-
 }

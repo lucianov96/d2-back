@@ -7,8 +7,8 @@ import com.d2back.model.enum.ClassSkill
 import com.d2back.model.enum.Key.aura_when_equipped
 import com.d2back.model.enum.Key.charged_skill
 import com.d2back.model.enum.Key.class_skill_level
-import com.d2back.model.enum.Key.skill_levels
 import com.d2back.model.enum.Key.non_class_skill
+import com.d2back.model.enum.Key.skill_levels
 import com.d2back.model.enum.Key.skill_on_attack
 import com.d2back.model.enum.Key.skill_on_death
 import com.d2back.model.enum.Key.skill_on_hit
@@ -65,34 +65,34 @@ abstract class BonusMapper {
             skill_on_attack, skill_on_death, skill_on_hit, skill_on_level_up, skill_when_struck -> {
                 description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
                 description.replaceFirst("&", "${modifierBonuses[1]?.absoluteIntValue}")
-                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[2]?.absoluteStringValue?: "").tabDescription}")
+                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[2]?.absoluteStringValue ?: "").tabDescription}")
             }
             aura_when_equipped, non_class_skill -> {
                 description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue?: "").tabDescription}")
+                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").tabDescription}")
             }
             charged_skill -> {
                 description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue?: "").tabDescription}")
+                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").tabDescription}")
                 description.replaceFirst("&", "${modifierBonuses[2]?.absoluteIntValue}")
             }
             class_skill_level -> {
                 description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${ClassSkill.valueOf(modifierBonuses[1]?.absoluteStringValue?: "").description}")
+                description.replaceFirst("&", "${ClassSkill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").description}")
             }
             skill_levels -> {
-                val skill = Skill.valueOf(modifierBonuses[1]?.absoluteStringValue?: "")
+                val skill = Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "")
                 description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
                 description.replaceFirst("&", "${skill.tabDescription} ${skill.characterOnlyDescription}")
             }
             skill_tab_levels -> {
                 description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${TabSkill.valueOf(modifierBonuses[1]?.absoluteStringValue?: "").description}")
+                description.replaceFirst("&", "${TabSkill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").description}")
             }
             else -> {
-                    modifierBonuses.forEach {
-                    if(it?.modifierType == absolute) {
-                        if(it.absoluteStringValue != null) {
+                modifierBonuses.forEach {
+                    if (it?.modifierType == absolute) {
+                        if (it.absoluteStringValue != null) {
                             description.replaceFirst("&", it.absoluteStringValue!!)
                         } else {
                             description.replaceFirst("&", "${it.absoluteIntValue!!}")
@@ -105,6 +105,5 @@ abstract class BonusMapper {
         }
 
         return description
-
     }
 }

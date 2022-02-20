@@ -10,7 +10,7 @@ import javax.persistence.OneToMany
 import javax.persistence.Table
 
 @Table(
-        name = "set",
+    name = "set",
 )
 @Entity
 @Audited
@@ -26,5 +26,4 @@ class Set {
 
     @OneToMany(mappedBy = "set", cascade = [CascadeType.ALL])
     var setItems: List<SetItem>? = null
-
 }

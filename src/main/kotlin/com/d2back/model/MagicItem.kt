@@ -22,5 +22,4 @@ abstract class MagicItem {
 
     @Column(name = "item_name", updatable = true, nullable = false)
     var name: String = ""
-
 }

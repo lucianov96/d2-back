@@ -27,11 +27,10 @@ abstract class UniqueItemMapper {
             uniqueItem.id,
             uniqueItem.name,
             uniqueItem.bonuses.map {
-               bonusMapper.toDto(it)
+                bonusMapper.toDto(it)
             },
             normalItemMapper.toDto(uniqueItem.normalItem),
 
         )
     }
-
 }

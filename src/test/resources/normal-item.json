@@ -1,0 +1,13 @@
+{
+  "id": 3,
+  "name": "Guantes de Cuero",
+  "type": "gloves",
+  "level": 0,
+  "durability": 12,
+  "difficulty": "normal",
+  "defense": {
+    "modifier_type": "range",
+    "between_value_1": 2,
+    "between_value_2": 3
+  }
+}

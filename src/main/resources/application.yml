@@ -1,0 +1,56 @@
+app:
+  description: ${app.name} is a Spring Boot application
+  base-package: com.d2back
+  name: d2back
+spring:
+  profiles:
+    active: ${ENVIRONMENT:dev}
+  main:
+    allow-bean-definition-overriding: true
+  kafka:
+    bootstrap-servers: ${GLOBAL_KAFKA_HOST_PLAIN:localhost:9092}
+    consumer:
+      bootstrap-servers: ${GLOBAL_KAFKA_HOST_PLAIN:localhost:9092}
+      group-id: ${MS_NAME:d2back}
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://${FAMILY_POSTGRES_HOST:localhost}:5432/${MS_NAME:postgresl}
+    username: ${MS_NAME:root}
+    password: ${FAMILY_POSTGRES_PASSWORD:root}
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        globally_quoted_identifiers: true
+        format_sql: true
+        jdbc:
+          time_zone: ${TIME_ZONE:UTC}
+      org:
+        hibernate:
+          envers:
+            default_schema: public
+            store_dataAt_delete: true
+  liquibase:
+    change-log: classpath:liquibase/liquibase-changelog.yml
+    enabled: false
+  output:
+    ansi:
+      enabled: ALWAYS
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+    serialization:
+      write_dates_as_timestamps: false
+server:
+  error:
+    include-stacktrace: always
+    include-message: always
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    loggers:
+      enabled: true

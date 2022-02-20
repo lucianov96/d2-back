@@ -12,10 +12,7 @@ data class NormalItemDto(
     val durability: Int,
     val characterClass: CharacterClass?,
     val difficulty: Difficulty,
-    val defenseMin: ModifierBonusDto?,
-    val defenseMax: ModifierBonusDto?,
-    val damage1hMin: ModifierBonusDto?,
-    val damage2hMin: ModifierBonusDto?,
-    val damage1hMax: ModifierBonusDto?,
-    val damage2hMax: ModifierBonusDto?
+    val defense: ModifierBonusDto?,
+    val damage1h: ModifierBonusDto?,
+    val damage2h: ModifierBonusDto?
 )

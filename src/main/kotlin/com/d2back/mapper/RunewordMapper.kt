@@ -33,5 +33,4 @@ abstract class RunewordMapper {
             runeword.runes
         )
     }
-
 }

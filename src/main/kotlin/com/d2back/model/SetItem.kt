@@ -16,7 +16,7 @@ import javax.persistence.Table
 @Entity
 @Audited
 @DynamicUpdate
-class SetItem: MagicItem() {
+class SetItem : MagicItem() {
 
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinColumn(name = "normal_item_id", referencedColumnName = "id_item")
@@ -28,5 +28,4 @@ class SetItem: MagicItem() {
 
     @OneToMany(mappedBy = "setItem", cascade = [CascadeType.ALL])
     var bonuses: List<Bonus> = mutableListOf()
-
 }
