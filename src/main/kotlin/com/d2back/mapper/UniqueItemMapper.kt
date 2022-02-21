@@ -30,7 +30,6 @@ abstract class UniqueItemMapper {
                 bonusMapper.toDto(it)
             },
             normalItemMapper.toDto(uniqueItem.normalItem),
-
         )
     }
 }

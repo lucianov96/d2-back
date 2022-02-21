@@ -15,5 +15,15 @@ import org.mapstruct.ReportingPolicy
 )
 abstract class ModifierBonusMapper {
 
-    abstract fun toDto(modifierBonus: ModifierBonus?): ModifierBonusDto?
+    fun toDto(modifierBonus: ModifierBonus?): ModifierBonusDto? {
+        return if (modifierBonus != null) {
+            ModifierBonusDto(
+                modifierBonus.modifierType,
+                modifierBonus.betweenValue1,
+                modifierBonus.betweenValue2,
+                modifierBonus.absoluteIntValue,
+                modifierBonus.absoluteStringValue,
+            )
+        } else null
+    }
 }
