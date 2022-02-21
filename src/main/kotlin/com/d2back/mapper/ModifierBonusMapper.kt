@@ -26,4 +26,16 @@ abstract class ModifierBonusMapper {
             )
         } else null
     }
+
+    fun toModel(modifierBonusDto: ModifierBonusDto?): ModifierBonus? {
+        return if (modifierBonusDto != null) {
+            ModifierBonus().apply {
+                modifierType = modifierBonusDto.modifierType
+                betweenValue1 = modifierBonusDto.betweenValue1
+                betweenValue2 = modifierBonusDto.betweenValue2
+                absoluteIntValue = modifierBonusDto.absoluteIntValue
+                absoluteStringValue = modifierBonusDto.absoluteStringValue
+            }
+        } else null
+    }
 }

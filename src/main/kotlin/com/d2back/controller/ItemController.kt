@@ -29,6 +29,8 @@ class ItemController(
 
     @PostMapping("/normal")
     fun createItem(@RequestBody normalItemDto: NormalItemDto): ResponseEntity<NormalItemDto> {
-        return ResponseEntity.ok().body(normalItemDto)
+        return ResponseEntity.ok().body(
+            normalItemService.save(normalItemDto)
+        )
     }
 }

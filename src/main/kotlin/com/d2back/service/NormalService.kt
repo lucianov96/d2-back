@@ -9,4 +9,5 @@ import org.springframework.data.jpa.domain.Specification
 interface NormalService {
 
     fun findAll(specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto>
+    fun save(normalItemDto: NormalItemDto): NormalItemDto
 }

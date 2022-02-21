@@ -39,4 +39,32 @@ abstract class NormalItemMapper {
             modifierBonusMapper.toDto(damage2h),
         )
     }
+
+    fun toModel(normalItemDto: NormalItemDto): NormalItem {
+        val defenseModel = modifierBonusMapper.toModel(normalItemDto.defense)
+        val damage1hModel = modifierBonusMapper.toModel(normalItemDto.damage1h)
+        val damage2hModel = modifierBonusMapper.toModel(normalItemDto.damage2h)
+
+        val bonuses = listOf(defenseModel, damage1hModel, damage2hModel).filterNotNull()
+
+        val normalItem = NormalItem().apply {
+            id = normalItemDto.id
+            name = normalItemDto.name
+            type = normalItemDto.type
+            level = normalItemDto.level
+            durability = normalItemDto.durability
+            characterClass = normalItemDto.characterClass
+            difficulty = normalItemDto.difficulty
+        }
+
+        bonuses.forEach {
+            it.normalItem = normalItem
+        }
+
+        normalItem.apply {
+            modifierBonuses = bonuses
+        }
+
+        return normalItem
+    }
 }

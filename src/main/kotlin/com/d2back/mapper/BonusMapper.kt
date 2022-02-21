@@ -43,7 +43,7 @@ abstract class BonusMapper {
         val bonus3 = bonus.modifierBonuses.find { it.magicItemValue == MagicItemValue.bonus3 }
         val bonus4 = bonus.modifierBonuses.find { it.magicItemValue == MagicItemValue.bonus4 }
 
-        val bonuses = listOf(bonus1, bonus2, bonus3, bonus4).filter { it != null }
+        val bonuses = listOf(bonus1, bonus2, bonus3, bonus4).filterNotNull()
 
         return BonusDto(
             bonus.id,

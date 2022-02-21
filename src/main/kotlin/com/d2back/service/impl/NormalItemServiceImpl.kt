@@ -19,4 +19,11 @@ class NormalItemServiceImpl(
     override fun findAll(specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto> {
         return normalItemRepository.findAll(Specification.where(specs), pageable).map(normalItemMapper::toDto)
     }
+
+    override fun save(normalItemDto: NormalItemDto): NormalItemDto {
+        val normalItem = normalItemRepository.save(
+            normalItemMapper.toModel(normalItemDto)
+        )
+        return normalItemMapper.toDto(normalItem)
+    }
 }

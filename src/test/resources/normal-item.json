@@ -1,13 +1,13 @@
 {
-  "id": 3,
-  "name": "Guantes de Cuero",
-  "type": "gloves",
+  "id": 1,
+  "name": "Armadura Acolchada",
+  "type": "armor",
   "level": 0,
-  "durability": 12,
+  "durability": 20,
   "difficulty": "normal",
   "defense": {
     "modifier_type": "range",
-    "between_value_1": 2,
-    "between_value_2": 3
+    "between_value1": 8,
+    "between_value2": 11
   }
 }

@@ -17,7 +17,7 @@ import javax.persistence.OneToMany
 import javax.persistence.Table
 
 @Table(
-    name = "modifier_bonus",
+    name = "bonus",
 )
 @Entity
 @Audited
@@ -25,7 +25,7 @@ import javax.persistence.Table
 class Bonus {
 
     @Id
-    @Column(name = "id_item", updatable = false, nullable = false)
+    @Column(name = "id_bonus", updatable = false, nullable = false)
     var id: Int = 0
 
     @Column(name = "key", updatable = true)
