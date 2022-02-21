@@ -35,7 +35,7 @@ class Bonus {
     @Column(name = "objects", updatable = true)
     var objects: Int? = null
 
-    @Column(name = "key", updatable = true)
+    @Column(name = "bonus_type", updatable = true)
     @Enumerated(EnumType.STRING)
     var bonusType: BonusType = BonusType.unique
 

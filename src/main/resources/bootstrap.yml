@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: integration-soat
+  profiles:
+    active: ${ENVIRONMENT:prod}
+  cloud:
+    config:
+      uri: http://shared-config-server.shared-config-server.svc/
+      enabled: true

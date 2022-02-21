@@ -12,8 +12,8 @@ import org.springframework.stereotype.Service
 
 @Service
 class NormalItemServiceImpl(
-    val normalItemRepository: NormalItemRepository,
-    val normalItemMapper: NormalItemMapper
+    val normalItemMapper: NormalItemMapper,
+    val normalItemRepository: NormalItemRepository
 ) : NormalService {
 
     override fun findAll(specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto> {

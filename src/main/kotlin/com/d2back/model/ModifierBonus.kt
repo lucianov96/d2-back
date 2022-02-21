@@ -48,7 +48,7 @@ class ModifierBonus {
     @Enumerated(EnumType.STRING)
     var normalItemValue: NormalItemValue? = null
 
-    @Column(name = "normal_item_value", updatable = true)
+    @Column(name = "magic_item_value", updatable = true)
     @Enumerated(EnumType.STRING)
     var magicItemValue: MagicItemValue? = null
 
