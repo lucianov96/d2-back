@@ -2,6 +2,8 @@ package com.d2back.mapper
 
 import com.d2back.dto.ModifierBonusDto
 import com.d2back.model.ModifierBonus
+import com.d2back.model.enum.values.MagicItemValue
+import com.d2back.model.enum.values.NormalItemValue
 import org.mapstruct.Mapper
 import org.mapstruct.NullValueCheckStrategy
 import org.mapstruct.NullValuePropertyMappingStrategy
@@ -27,7 +29,9 @@ abstract class ModifierBonusMapper {
         } else null
     }
 
-    fun toModel(modifierBonusDto: ModifierBonusDto?): ModifierBonus? {
+    fun toModel(modifierBonusDto: ModifierBonusDto?,
+                normalItemValueDto: NormalItemValue? = null,
+                magicItemValueDto: MagicItemValue? = null): ModifierBonus? {
         return if (modifierBonusDto != null) {
             ModifierBonus().apply {
                 modifierType = modifierBonusDto.modifierType
@@ -35,6 +39,8 @@ abstract class ModifierBonusMapper {
                 betweenValue2 = modifierBonusDto.betweenValue2
                 absoluteIntValue = modifierBonusDto.absoluteIntValue
                 absoluteStringValue = modifierBonusDto.absoluteStringValue
+                normalItemValue = normalItemValueDto
+                magicItemValue = magicItemValueDto
             }
         } else null
     }

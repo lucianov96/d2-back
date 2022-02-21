@@ -41,11 +41,11 @@ abstract class NormalItemMapper {
     }
 
     fun toModel(normalItemDto: NormalItemDto): NormalItem {
-        val defenseModel = modifierBonusMapper.toModel(normalItemDto.defense)
-        val damage1hModel = modifierBonusMapper.toModel(normalItemDto.damage1h)
-        val damage2hModel = modifierBonusMapper.toModel(normalItemDto.damage2h)
+        val defenseModel = modifierBonusMapper.toModel(normalItemDto.defense, NormalItemValue.defense)
+        val damage1hModel = modifierBonusMapper.toModel(normalItemDto.damage1h, NormalItemValue.damage1h)
+        val damage2hModel = modifierBonusMapper.toModel(normalItemDto.damage2h, NormalItemValue.damage2h)
 
-        val bonuses = listOf(defenseModel, damage1hModel, damage2hModel).filterNotNull()
+        val bonuses = listOfNotNull(defenseModel, damage1hModel, damage2hModel)
 
         val normalItem = NormalItem().apply {
             id = normalItemDto.id

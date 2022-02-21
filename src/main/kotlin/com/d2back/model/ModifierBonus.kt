@@ -10,13 +10,15 @@ import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
+import javax.persistence.GenerationType
+import javax.persistence.GeneratedValue
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 @Table(
-    name = "modifier_bonus",
+        name = "modifier_bonus",
 )
 @Entity
 @Audited
@@ -24,8 +26,9 @@ import javax.persistence.Table
 class ModifierBonus {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_modifier_bonus", updatable = false, nullable = false)
-    var idModifierBonus: Int = 0
+    var id: Int = 0
 
     @Column(name = "modifier_type", updatable = true)
     @Enumerated(EnumType.STRING)
@@ -53,10 +56,10 @@ class ModifierBonus {
     var magicItemValue: MagicItemValue? = null
 
     @ManyToOne
-    @JoinColumn(name = "id_bonus")
+    @JoinColumn(name = "id_bonus", nullable = true)
     var bonus: Bonus? = null
 
     @ManyToOne
-    @JoinColumn(name = "id_normal_item")
+    @JoinColumn(name = "id_item", nullable = true)
     var normalItem: NormalItem? = null
 }
