@@ -43,7 +43,7 @@ class Bonus {
     var bonusType: BonusType = BonusType.unique
 
     @ManyToOne
-    @JoinColumn(name = "id_set_item", referencedColumnName = "id_item", nullable = true)
+    @JoinColumn(name = "id_set_item", referencedColumnName = "id_item", nullable = true, updatable = false)
     var setItem: SetItem? = null
 
     @ManyToOne
@@ -51,7 +51,7 @@ class Bonus {
     var uniqueItem: UniqueItem? = null
 
     @ManyToOne
-    @JoinColumn(name = "runeword")
+    @JoinColumn(name = "runeword", referencedColumnName = "id_item", nullable = true)
     var runeword: Runeword? = null
 
     @OneToMany(mappedBy = "bonus", cascade = [CascadeType.ALL])

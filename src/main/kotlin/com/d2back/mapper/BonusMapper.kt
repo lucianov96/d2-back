@@ -63,10 +63,10 @@ abstract class BonusMapper {
         setItemId: Int? = null,
         runewordId: Int? = null): Bonus
     {
-        val bonus1 = modifierBonusMapper.toModel(bonusDto.bonus1, magicItemValueDto = MagicItemValue.bonus1)
-        val bonus2 = modifierBonusMapper.toModel(bonusDto.bonus2, magicItemValueDto = MagicItemValue.bonus2)
-        val bonus3 = modifierBonusMapper.toModel(bonusDto.bonus3, magicItemValueDto = MagicItemValue.bonus3)
-        val bonus4 = modifierBonusMapper.toModel(bonusDto.bonus4, magicItemValueDto = MagicItemValue.bonus4)
+        val bonus1 = modifierBonusMapper.toModel(bonusDto.bonus1, magicItemValueDto = MagicItemValue.bonus1, uniqueItemId = uniqueItemId)
+        val bonus2 = modifierBonusMapper.toModel(bonusDto.bonus2, magicItemValueDto = MagicItemValue.bonus2, uniqueItemId = uniqueItemId)
+        val bonus3 = modifierBonusMapper.toModel(bonusDto.bonus3, magicItemValueDto = MagicItemValue.bonus3, uniqueItemId = uniqueItemId)
+        val bonus4 = modifierBonusMapper.toModel(bonusDto.bonus4, magicItemValueDto = MagicItemValue.bonus4, uniqueItemId = uniqueItemId)
 
         val modifierBonusesModel = listOfNotNull(
             bonus1, bonus2, bonus3, bonus4

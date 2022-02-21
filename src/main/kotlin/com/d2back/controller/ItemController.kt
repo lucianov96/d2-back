@@ -3,6 +3,7 @@ package com.d2back.controller
 import com.d2back.dto.NormalItemDto
 import com.d2back.dto.UniqueItemDto
 import com.d2back.model.NormalItem
+import com.d2back.model.UniqueItem
 import com.d2back.service.NormalItemService
 import com.d2back.service.UniqueItemService
 import com.sipios.springsearch.anotation.SearchSpec
@@ -35,6 +36,11 @@ class ItemController(
         return ResponseEntity.ok().body(
             normalItemService.save(normalItemDto)
         )
+    }
+
+    @GetMapping("/unique")
+    fun getUniqueItems(@SearchSpec specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto> {
+        return uniqueItemService.findAll(specs, pageable)
     }
 
     @PostMapping("/unique")
