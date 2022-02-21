@@ -1,6 +1,7 @@
 package com.d2back.mapper
 
 import com.d2back.dto.UniqueItemDto
+import com.d2back.model.NormalItem
 import com.d2back.model.UniqueItem
 import org.mapstruct.Mapper
 import org.mapstruct.NullValueCheckStrategy
@@ -26,10 +27,28 @@ abstract class UniqueItemMapper {
         return UniqueItemDto(
             uniqueItem.id,
             uniqueItem.name,
+            uniqueItem.level,
             uniqueItem.bonuses.map {
                 bonusMapper.toDto(it)
             },
             normalItemMapper.toDto(uniqueItem.normalItem),
         )
+    }
+
+    fun toModel(uniqueItemDto: UniqueItemDto): UniqueItem {
+
+        val uniqueItem = UniqueItem().apply {
+            id = uniqueItemDto.id
+            name = uniqueItemDto.name
+            level = uniqueItemDto.level
+            bonuses = uniqueItemDto.bonuses.map {
+                bonusMapper.toModel(it, uniqueItemId = uniqueItemDto.id)
+            }
+            normalItem = NormalItem().apply {
+                id = uniqueItemDto.normalItem.id
+            }
+        }
+
+        return uniqueItem
     }
 }

@@ -18,7 +18,7 @@ import javax.persistence.ManyToOne
 import javax.persistence.Table
 
 @Table(
-        name = "modifier_bonus",
+    name = "modifier_bonus",
 )
 @Entity
 @Audited

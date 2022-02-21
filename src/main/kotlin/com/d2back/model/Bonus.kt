@@ -10,6 +10,8 @@ import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
+import javax.persistence.GeneratedValue
+import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
@@ -25,6 +27,7 @@ import javax.persistence.Table
 class Bonus {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id_bonus", updatable = false, nullable = false)
     var id: Int = 0
 
@@ -40,11 +43,11 @@ class Bonus {
     var bonusType: BonusType = BonusType.unique
 
     @ManyToOne
-    @JoinColumn(name = "id_set_item")
+    @JoinColumn(name = "id_set_item", referencedColumnName = "id_item", nullable = true)
     var setItem: SetItem? = null
 
     @ManyToOne
-    @JoinColumn(name = "id_unique_item")
+    @JoinColumn(name = "id_unique_item", referencedColumnName = "id_item", nullable = true)
     var uniqueItem: UniqueItem? = null
 
     @ManyToOne

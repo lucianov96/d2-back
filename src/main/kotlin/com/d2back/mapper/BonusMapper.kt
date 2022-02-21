@@ -1,8 +1,8 @@
 package com.d2back.mapper
 
 import com.d2back.dto.BonusDto
-import com.d2back.model.Bonus
-import com.d2back.model.ModifierBonus
+import com.d2back.model.*
+
 import com.d2back.model.enum.ClassSkill
 import com.d2back.model.enum.Key.aura_when_equipped
 import com.d2back.model.enum.Key.charged_skill
@@ -56,6 +56,44 @@ abstract class BonusMapper {
             modifierBonusMapper.toDto(bonus3),
             modifierBonusMapper.toDto(bonus4)
         )
+    }
+
+    fun toModel(bonusDto: BonusDto,
+        uniqueItemId: Int? = null,
+        setItemId: Int? = null,
+        runewordId: Int? = null): Bonus
+    {
+        val bonus1 = modifierBonusMapper.toModel(bonusDto.bonus1, magicItemValueDto = MagicItemValue.bonus1)
+        val bonus2 = modifierBonusMapper.toModel(bonusDto.bonus2, magicItemValueDto = MagicItemValue.bonus2)
+        val bonus3 = modifierBonusMapper.toModel(bonusDto.bonus3, magicItemValueDto = MagicItemValue.bonus3)
+        val bonus4 = modifierBonusMapper.toModel(bonusDto.bonus4, magicItemValueDto = MagicItemValue.bonus4)
+
+        val modifierBonusesModel = listOfNotNull(
+            bonus1, bonus2, bonus3, bonus4
+        )
+
+        val bonus = Bonus().apply {
+            key = bonusDto.key
+            objects = bonusDto.objects
+            bonusType = bonusDto.bonusType
+            uniqueItem = if(uniqueItemId != null) {
+                UniqueItem().apply {
+                    id = uniqueItemId
+                }
+            } else null
+            setItem = if(setItemId != null) {
+                SetItem().apply {
+                    id = setItemId
+                }
+            } else null
+            runeword = if(runewordId != null) {
+                Runeword().apply {
+                    id = runewordId
+                }
+            } else null
+            modifierBonuses = modifierBonusesModel
+        }
+        return bonus
     }
 
     private fun buildDescription(bonus: Bonus, modifierBonuses: List<ModifierBonus?>): String {

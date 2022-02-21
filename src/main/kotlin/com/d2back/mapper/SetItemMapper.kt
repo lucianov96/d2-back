@@ -29,6 +29,7 @@ abstract class SetItemMapper {
         return SetItemDto(
             setItem.id,
             setItem.name,
+            setItem.level,
             setItem.bonuses.map {
                 bonusMapper.toDto(it)
             },

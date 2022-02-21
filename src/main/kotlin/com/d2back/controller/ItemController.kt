@@ -1,8 +1,10 @@
 package com.d2back.controller
 
 import com.d2back.dto.NormalItemDto
+import com.d2back.dto.UniqueItemDto
 import com.d2back.model.NormalItem
-import com.d2back.service.NormalService
+import com.d2back.service.NormalItemService
+import com.d2back.service.UniqueItemService
 import com.sipios.springsearch.anotation.SearchSpec
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -19,7 +21,8 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("items")
 @Validated
 class ItemController(
-    private val normalItemService: NormalService
+        private val normalItemService: NormalItemService,
+        private val uniqueItemService: UniqueItemService,
 ) {
 
     @GetMapping("/normal")
@@ -31,6 +34,13 @@ class ItemController(
     fun createItem(@RequestBody normalItemDto: NormalItemDto): ResponseEntity<NormalItemDto> {
         return ResponseEntity.ok().body(
             normalItemService.save(normalItemDto)
+        )
+    }
+
+    @PostMapping("/unique")
+    fun createUniqueItem(@RequestBody uniqueItemDto: UniqueItemDto): ResponseEntity<UniqueItemDto> {
+        return ResponseEntity.ok().body(
+            uniqueItemService.save(uniqueItemDto)
         )
     }
 }

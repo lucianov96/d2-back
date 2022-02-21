@@ -6,7 +6,7 @@ import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
 
-interface NormalService {
+interface NormalItemService {
 
     fun findAll(specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto>
     fun save(normalItemDto: NormalItemDto): NormalItemDto

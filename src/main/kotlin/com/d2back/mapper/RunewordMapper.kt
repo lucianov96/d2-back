@@ -26,6 +26,7 @@ abstract class RunewordMapper {
         return RunewordDto(
             runeword.id,
             runeword.name,
+            runeword.level,
             runeword.bonuses.map {
                 bonusMapper.toDto(it)
             },
