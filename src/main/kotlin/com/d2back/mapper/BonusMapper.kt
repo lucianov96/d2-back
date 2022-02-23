@@ -101,42 +101,42 @@ abstract class BonusMapper {
 
         when (bonus.key) {
             skill_on_attack, skill_on_death, skill_on_hit, skill_on_level_up, skill_when_struck -> {
-                description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${modifierBonuses[1]?.absoluteIntValue}")
-                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[2]?.absoluteStringValue ?: "").tabDescription}")
+                description = description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${modifierBonuses[1]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[2]?.absoluteStringValue ?: "").tabDescription}")
             }
             aura_when_equipped, non_class_skill -> {
-                description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").tabDescription}")
+                description = description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").tabDescription}")
             }
             charged_skill -> {
-                description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").tabDescription}")
-                description.replaceFirst("&", "${modifierBonuses[2]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").tabDescription}")
+                description = description.replaceFirst("&", "${modifierBonuses[2]?.absoluteIntValue}")
             }
             class_skill_level -> {
-                description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${ClassSkill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").description}")
+                description = description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${ClassSkill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").description}")
             }
             skill_levels -> {
                 val skill = Skill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "")
-                description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${skill.tabDescription} ${skill.characterOnlyDescription}")
+                description = description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${skill.tabDescription} ${skill.characterOnlyDescription}")
             }
             skill_tab_levels -> {
-                description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
-                description.replaceFirst("&", "${TabSkill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").description}")
+                description = description.replaceFirst("&", "${modifierBonuses[0]?.absoluteIntValue}")
+                description = description.replaceFirst("&", "${TabSkill.valueOf(modifierBonuses[1]?.absoluteStringValue ?: "").description}")
             }
             else -> {
                 modifierBonuses.forEach {
                     if (it?.modifierType == absolute) {
                         if (it.absoluteStringValue != null) {
-                            description.replaceFirst("&", it.absoluteStringValue!!)
+                            description = description.replaceFirst("&", it.absoluteStringValue!!)
                         } else {
-                            description.replaceFirst("&", "${it.absoluteIntValue!!}")
+                            description = description.replaceFirst("&", "${it.absoluteIntValue!!}")
                         }
                     } else {
-                        description.replaceFirst("&", "${it?.betweenValue1}-${it?.betweenValue2}")
+                        description = description.replaceFirst("&", "${it?.betweenValue1}-${it?.betweenValue2}")
                     }
                 }
             }
