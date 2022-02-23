@@ -6,6 +6,7 @@ import com.d2back.model.enum.values.MagicItemValue
 import com.d2back.model.enum.values.NormalItemValue
 import org.hibernate.annotations.DynamicUpdate
 import org.hibernate.envers.Audited
+import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
@@ -26,7 +27,7 @@ import javax.persistence.Table
 class ModifierBonus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_modifier_bonus", updatable = false, nullable = false)
     var id: Int = 0
 

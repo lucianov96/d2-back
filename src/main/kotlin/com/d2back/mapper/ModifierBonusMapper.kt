@@ -34,6 +34,7 @@ abstract class ModifierBonusMapper {
     fun toModel(modifierBonusDto: ModifierBonusDto?,
                 normalItemValueDto: NormalItemValue? = null,
                 magicItemValueDto: MagicItemValue? = null,
+                bonusId: Int? = null,
                 uniqueItemId: Int? = null): ModifierBonus? {
         return if (modifierBonusDto != null) {
             ModifierBonus().apply {
@@ -46,6 +47,7 @@ abstract class ModifierBonusMapper {
                 magicItemValue = magicItemValueDto
                 if(magicItemValueDto != null) {
                     bonus = Bonus().apply {
+                        id = bonusId?: 0
                         uniqueItem = UniqueItem().apply {
                             id =  uniqueItemId!!
                         }

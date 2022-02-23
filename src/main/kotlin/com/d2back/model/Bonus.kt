@@ -27,7 +27,7 @@ import javax.persistence.Table
 class Bonus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_bonus", updatable = false, nullable = false)
     var id: Int = 0
 
@@ -56,4 +56,6 @@ class Bonus {
 
     @OneToMany(mappedBy = "bonus", cascade = [CascadeType.ALL])
     var modifierBonuses: List<ModifierBonus> = mutableListOf()
+
+    var number: Long? = null
 }

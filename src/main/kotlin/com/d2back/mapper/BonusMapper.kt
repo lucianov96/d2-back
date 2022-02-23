@@ -2,7 +2,6 @@ package com.d2back.mapper
 
 import com.d2back.dto.BonusDto
 import com.d2back.model.*
-
 import com.d2back.model.enum.ClassSkill
 import com.d2back.model.enum.Key.aura_when_equipped
 import com.d2back.model.enum.Key.charged_skill
@@ -63,16 +62,17 @@ abstract class BonusMapper {
         setItemId: Int? = null,
         runewordId: Int? = null): Bonus
     {
-        val bonus1 = modifierBonusMapper.toModel(bonusDto.bonus1, magicItemValueDto = MagicItemValue.bonus1, uniqueItemId = uniqueItemId)
-        val bonus2 = modifierBonusMapper.toModel(bonusDto.bonus2, magicItemValueDto = MagicItemValue.bonus2, uniqueItemId = uniqueItemId)
-        val bonus3 = modifierBonusMapper.toModel(bonusDto.bonus3, magicItemValueDto = MagicItemValue.bonus3, uniqueItemId = uniqueItemId)
-        val bonus4 = modifierBonusMapper.toModel(bonusDto.bonus4, magicItemValueDto = MagicItemValue.bonus4, uniqueItemId = uniqueItemId)
+        val bonus1 = modifierBonusMapper.toModel(bonusDto.bonus1, magicItemValueDto = MagicItemValue.bonus1, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
+        val bonus2 = modifierBonusMapper.toModel(bonusDto.bonus2, magicItemValueDto = MagicItemValue.bonus2, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
+        val bonus3 = modifierBonusMapper.toModel(bonusDto.bonus3, magicItemValueDto = MagicItemValue.bonus3, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
+        val bonus4 = modifierBonusMapper.toModel(bonusDto.bonus4, magicItemValueDto = MagicItemValue.bonus4, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
 
         val modifierBonusesModel = listOfNotNull(
             bonus1, bonus2, bonus3, bonus4
         )
 
         val bonus = Bonus().apply {
+            id = bonusDto.id?: 0
             key = bonusDto.key
             objects = bonusDto.objects
             bonusType = bonusDto.bonusType

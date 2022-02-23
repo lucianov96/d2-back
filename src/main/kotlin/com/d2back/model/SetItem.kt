@@ -18,7 +18,7 @@ import javax.persistence.Table
 @DynamicUpdate
 class SetItem : MagicItem() {
 
-    @OneToOne(cascade = [CascadeType.ALL])
+    @OneToOne
     @JoinColumn(name = "normal_item_id", referencedColumnName = "id_item")
     var normalItem: NormalItem = NormalItem()
 
