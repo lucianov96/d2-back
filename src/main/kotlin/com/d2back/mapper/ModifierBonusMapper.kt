@@ -1,9 +1,8 @@
 package com.d2back.mapper
 
 import com.d2back.dto.ModifierBonusDto
-import com.d2back.model.Bonus
-import com.d2back.model.ModifierBonus
-import com.d2back.model.UniqueItem
+import com.d2back.model.*
+import com.d2back.model.Set
 import com.d2back.model.enum.values.MagicItemValue
 import com.d2back.model.enum.values.NormalItemValue
 import org.mapstruct.Mapper
@@ -32,11 +31,19 @@ abstract class ModifierBonusMapper {
     }
 
     fun toModel(modifierBonusDto: ModifierBonusDto?,
-                normalItemValueDto: NormalItemValue? = null,
-                magicItemValueDto: MagicItemValue? = null,
-                bonusId: Int? = null,
-                uniqueItemId: Int? = null): ModifierBonus? {
+            normalItemValueDto: NormalItemValue? = null,
+            magicItemValueDto: MagicItemValue? = null,
+            bonusId: Int? = null,
+            uniqueItemId: Int? = null,
+            setItemId: Int? = null,
+            runewordId: Int? = null,
+            setId: Int? = null): ModifierBonus? {
         return if (modifierBonusDto != null) {
+
+            if(listOfNotNull(bonusId, uniqueItemId, setItemId, runewordId, setId).size != 1) {
+                // TODO: Throw Exception
+            }
+
             ModifierBonus().apply {
                 modifierType = modifierBonusDto.modifierType
                 betweenValue1 = modifierBonusDto.betweenValue1
@@ -48,9 +55,26 @@ abstract class ModifierBonusMapper {
                 if(magicItemValueDto != null) {
                     bonus = Bonus().apply {
                         id = bonusId?: 0
-                        uniqueItem = UniqueItem().apply {
-                            id =  uniqueItemId!!
-                        }
+                        uniqueItem = if(uniqueItemId != null) {
+                            UniqueItem().apply {
+                                id =  uniqueItemId
+                            }
+                        } else null
+                        setItem = if(setItemId != null) {
+                            SetItem().apply {
+                                id =  setItemId
+                            }
+                        } else null
+                        set = if(setId != null) {
+                            Set().apply {
+                                id =  setId
+                            }
+                        } else null
+                        runeword = if(runewordId != null) {
+                            Runeword().apply {
+                                id =  runewordId
+                            }
+                        } else null
                     }
                 }
             }

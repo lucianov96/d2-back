@@ -42,7 +42,7 @@ abstract class BonusMapper {
         val bonus3 = bonus.modifierBonuses.find { it.magicItemValue == MagicItemValue.bonus3 }
         val bonus4 = bonus.modifierBonuses.find { it.magicItemValue == MagicItemValue.bonus4 }
 
-        val bonuses = listOf(bonus1, bonus2, bonus3, bonus4).filterNotNull()
+        val bonuses = listOfNotNull(bonus1, bonus2, bonus3, bonus4)
 
         return BonusDto(
             bonus.id,
@@ -60,12 +60,41 @@ abstract class BonusMapper {
     fun toModel(bonusDto: BonusDto,
         uniqueItemId: Int? = null,
         setItemId: Int? = null,
-        runewordId: Int? = null): Bonus
+        runewordId: Int? = null,
+        setId: Int? = null): Bonus
     {
-        val bonus1 = modifierBonusMapper.toModel(bonusDto.bonus1, magicItemValueDto = MagicItemValue.bonus1, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
-        val bonus2 = modifierBonusMapper.toModel(bonusDto.bonus2, magicItemValueDto = MagicItemValue.bonus2, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
-        val bonus3 = modifierBonusMapper.toModel(bonusDto.bonus3, magicItemValueDto = MagicItemValue.bonus3, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
-        val bonus4 = modifierBonusMapper.toModel(bonusDto.bonus4, magicItemValueDto = MagicItemValue.bonus4, bonusId = bonusDto.id, uniqueItemId = uniqueItemId)
+        val bonus1 = modifierBonusMapper.toModel(
+            bonusDto.bonus1,
+            magicItemValueDto = MagicItemValue.bonus1,
+            bonusId = bonusDto.id,
+            uniqueItemId = uniqueItemId,
+            setItemId = setItemId,
+            runewordId = runewordId,
+            setId = setId)
+        val bonus2 = modifierBonusMapper.toModel(
+            bonusDto.bonus2,
+            magicItemValueDto = MagicItemValue.bonus2,
+            bonusId = bonusDto.id,
+            uniqueItemId = uniqueItemId,
+            setItemId = setItemId,
+            runewordId = runewordId,
+            setId = setId)
+        val bonus3 = modifierBonusMapper.toModel(
+            bonusDto.bonus3,
+            magicItemValueDto = MagicItemValue.bonus2,
+            bonusId = bonusDto.id,
+            uniqueItemId = uniqueItemId,
+            setItemId = setItemId,
+            runewordId = runewordId,
+            setId = setId)
+        val bonus4 = modifierBonusMapper.toModel(
+            bonusDto.bonus4,
+            magicItemValueDto = MagicItemValue.bonus4,
+            bonusId = bonusDto.id,
+            uniqueItemId = uniqueItemId,
+            setItemId = setItemId,
+            runewordId = runewordId,
+            setId = setId)
 
         val modifierBonusesModel = listOfNotNull(
             bonus1, bonus2, bonus3, bonus4
@@ -89,6 +118,11 @@ abstract class BonusMapper {
             runeword = if(runewordId != null) {
                 Runeword().apply {
                     id = runewordId
+                }
+            } else null
+            set = if(setId != null) {
+                Set().apply {
+                    id = setId
                 }
             } else null
             modifierBonuses = modifierBonusesModel

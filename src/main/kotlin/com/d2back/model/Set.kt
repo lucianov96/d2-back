@@ -26,4 +26,7 @@ class Set {
 
     @OneToMany(mappedBy = "set", cascade = [CascadeType.ALL])
     var setItems: List<SetItem>? = null
+
+    @OneToMany(mappedBy = "set", cascade = [CascadeType.ALL])
+    var bonuses: List<Bonus> = mutableListOf()
 }

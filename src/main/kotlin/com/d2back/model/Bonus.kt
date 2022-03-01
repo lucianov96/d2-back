@@ -54,6 +54,10 @@ class Bonus {
     @JoinColumn(name = "runeword", referencedColumnName = "id_item", nullable = true)
     var runeword: Runeword? = null
 
+    @ManyToOne
+    @JoinColumn(name = "id_set", referencedColumnName = "id_set", nullable = true, updatable = false)
+    var set: Set? = null
+
     @OneToMany(mappedBy = "bonus", cascade = [CascadeType.ALL])
     var modifierBonuses: List<ModifierBonus> = mutableListOf()
 
