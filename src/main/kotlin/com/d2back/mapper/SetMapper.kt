@@ -15,4 +15,5 @@ import org.mapstruct.ReportingPolicy
 abstract class SetMapper {
 
     abstract fun toDto(set: com.d2back.model.Set): SetDto
+    abstract fun toModel(set: SetDto): com.d2back.model.Set
 }
