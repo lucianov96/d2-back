@@ -1,11 +1,8 @@
 package com.d2back.controller
 
 import com.d2back.dto.NormalItemDto
-import com.d2back.dto.UniqueItemDto
-import com.d2back.model.NormalItem
-import com.d2back.model.UniqueItem
-import com.d2back.service.NormalItemService
-import com.d2back.service.UniqueItemService
+import com.d2back.dto.SetDto
+import com.d2back.service.SetService
 import com.sipios.springsearch.anotation.SearchSpec
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
@@ -22,31 +19,18 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("sets")
 @Validated
 class SetController(
-    private val normalItemService: NormalItemService,
-    private val uniqueItemService: UniqueItemService,
+    private val setService: SetService
 ) {
 
-    @GetMapping("/normal")
-    fun getNormalItems(@SearchSpec specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto> {
-        return normalItemService.findAll(specs, pageable)
-    }
-
-    @PostMapping("/normal")
-    fun createItem(@RequestBody normalItemDto: NormalItemDto): ResponseEntity<NormalItemDto> {
+    @PostMapping
+    fun createSet(@RequestBody setDto: SetDto): ResponseEntity<SetDto> {
         return ResponseEntity.ok().body(
-            normalItemService.save(normalItemDto)
+            setService.save(setDto)
         )
     }
 
-    @GetMapping("/unique")
-    fun getUniqueItems(@SearchSpec specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto> {
-        return uniqueItemService.findAll(specs, pageable)
-    }
-
-    @PostMapping("/unique")
-    fun createUniqueItem(@RequestBody uniqueItemDto: UniqueItemDto): ResponseEntity<UniqueItemDto> {
-        return ResponseEntity.ok().body(
-            uniqueItemService.save(uniqueItemDto)
-        )
+    @GetMapping
+    fun index(@SearchSpec specs: Specification<com.d2back.model.Set>?, pageable: Pageable): Page<SetDto> {
+        return setService.findAll(specs, pageable)
     }
 }

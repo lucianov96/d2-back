@@ -27,19 +27,19 @@ class ItemController(
 ) {
 
     @GetMapping("/normal")
-    fun getNormalItems(@SearchSpec specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto> {
+    fun indexNormalItems(@SearchSpec specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto> {
         return normalItemService.findAll(specs, pageable)
     }
 
     @PostMapping("/normal")
-    fun createItem(@RequestBody normalItemDto: NormalItemDto): ResponseEntity<NormalItemDto> {
+    fun createNormalItem(@RequestBody normalItemDto: NormalItemDto): ResponseEntity<NormalItemDto> {
         return ResponseEntity.ok().body(
             normalItemService.save(normalItemDto)
         )
     }
 
     @GetMapping("/unique")
-    fun getUniqueItems(@SearchSpec specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto> {
+    fun indexUniqueItems(@SearchSpec specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto> {
         return uniqueItemService.findAll(specs, pageable)
     }
 
