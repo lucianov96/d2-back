@@ -48,7 +48,7 @@ abstract class NormalItemMapper {
         val bonuses = listOfNotNull(defenseModel, damage1hModel, damage2hModel)
 
         val normalItem = NormalItem().apply {
-            id = normalItemDto.id
+            // id = normalItemDto.id
             name = normalItemDto.name
             type = normalItemDto.type
             level = normalItemDto.level

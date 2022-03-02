@@ -15,6 +15,10 @@ class SetServiceImpl(
     val setMapper: SetMapper,
     val setRepository: SetRepository
 ) : SetService {
+    override fun getMaxNumber(): Int {
+        return setRepository.getMaxNumber()
+    }
+
     override fun findAll(specs: Specification<Set>?, pageable: Pageable): Page<SetDto> {
         return setRepository.findAll(Specification.where(specs), pageable).map(setMapper::toDto)
     }

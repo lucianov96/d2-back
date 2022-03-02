@@ -5,7 +5,7 @@ import com.d2back.model.enum.Difficulty
 import com.d2back.model.enum.ItemType
 
 data class NormalItemDto(
-    val id: Int,
+    val id: Int?,
     val name: String,
     val type: ItemType,
     val level: Int,

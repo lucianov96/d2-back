@@ -10,8 +10,6 @@ import javax.persistence.Column
 import javax.persistence.Entity
 import javax.persistence.EnumType
 import javax.persistence.Enumerated
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.JoinColumn
 import javax.persistence.ManyToOne
@@ -27,7 +25,6 @@ import javax.persistence.Table
 class Bonus {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_bonus", updatable = false, nullable = false)
     var id: Int = 0
 
@@ -61,5 +58,5 @@ class Bonus {
     @OneToMany(mappedBy = "bonus", cascade = [CascadeType.ALL])
     var modifierBonuses: List<ModifierBonus> = mutableListOf()
 
-    var number: Long? = null
+    var number: Int? = null
 }

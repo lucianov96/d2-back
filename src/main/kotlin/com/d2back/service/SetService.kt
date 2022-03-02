@@ -8,6 +8,7 @@ import org.springframework.data.jpa.domain.Specification
 
 interface SetService {
 
+    fun getMaxNumber(): Int
     fun findAll(specs: Specification<Set>?, pageable: Pageable): Page<SetDto>
     fun save(setDto: SetDto): SetDto
 }

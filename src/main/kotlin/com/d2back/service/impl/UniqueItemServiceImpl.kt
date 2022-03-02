@@ -15,6 +15,9 @@ class UniqueItemServiceImpl(
     val uniqueItemMapper: UniqueItemMapper,
     val uniqueItemRepository: UniqueItemRepository
 ) : UniqueItemService {
+    override fun getMaxNumber(): Int {
+        return uniqueItemRepository.getMaxNumber()
+    }
 
     override fun findAll(specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto> {
         return uniqueItemRepository.findAll(Specification.where(specs), pageable).map(uniqueItemMapper::toDto)

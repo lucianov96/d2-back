@@ -1,8 +1,11 @@
 package com.d2back.mapper
 
+import com.d2back.dto.BonusDto
 import com.d2back.dto.UniqueItemDto
 import com.d2back.model.NormalItem
 import com.d2back.model.UniqueItem
+import com.d2back.service.BonusService
+import com.d2back.service.UniqueItemService
 import org.mapstruct.Mapper
 import org.mapstruct.NullValueCheckStrategy
 import org.mapstruct.NullValuePropertyMappingStrategy
@@ -23,6 +26,12 @@ abstract class UniqueItemMapper {
     @Autowired
     private lateinit var bonusMapper: BonusMapper
 
+    @Autowired
+    private lateinit var bonusService: BonusService
+
+    @Autowired
+    private lateinit var uniqueItemService: UniqueItemService
+
     fun toDto(uniqueItem: UniqueItem): UniqueItemDto {
         return UniqueItemDto(
             uniqueItem.id,
@@ -37,15 +46,23 @@ abstract class UniqueItemMapper {
 
     fun toModel(uniqueItemDto: UniqueItemDto): UniqueItem {
 
+        val bonusNumber = bonusService.getMaxNumber() +1
+        val uniqueItemNumber = uniqueItemService.getMaxNumber() +1
+
+        val bonusesDto = mutableListOf<BonusDto>()
+        uniqueItemDto.bonuses.forEachIndexed { index, element ->
+            bonusesDto.add(element.copy(id = bonusNumber + index))
+        }
+
         val uniqueItem = UniqueItem().apply {
-            id = uniqueItemDto.id
+            id = uniqueItemNumber
             name = uniqueItemDto.name
             level = uniqueItemDto.level
-            bonuses = uniqueItemDto.bonuses.map {
-                bonusMapper.toModel(it, uniqueItemId = uniqueItemDto.id)
+            bonuses = bonusesDto.map {
+                bonusMapper.toModel(it, uniqueItemId = uniqueItemNumber)
             }
             normalItem = NormalItem().apply {
-                id = uniqueItemDto.normalItem.id
+                id = uniqueItemDto.normalItem.id!!
             }
         }
 
