@@ -1,10 +1,13 @@
 package com.d2back.controller
 
 import com.d2back.dto.NormalItemDto
+import com.d2back.dto.RunewordDto
 import com.d2back.dto.UniqueItemDto
 import com.d2back.model.NormalItem
+import com.d2back.model.Runeword
 import com.d2back.model.UniqueItem
 import com.d2back.service.NormalItemService
+import com.d2back.service.RunewordService
 import com.d2back.service.UniqueItemService
 import com.sipios.springsearch.anotation.SearchSpec
 import org.springframework.data.domain.Page
@@ -22,8 +25,9 @@ import org.springframework.web.bind.annotation.RestController
 @RequestMapping("items")
 @Validated
 class ItemController(
-        private val normalItemService: NormalItemService,
-        private val uniqueItemService: UniqueItemService,
+    private val normalItemService: NormalItemService,
+    private val runewordService: RunewordService,
+    private val uniqueItemService: UniqueItemService,
 ) {
 
     @GetMapping("/normal")
@@ -47,6 +51,18 @@ class ItemController(
     fun createUniqueItem(@RequestBody uniqueItemDto: UniqueItemDto): ResponseEntity<UniqueItemDto> {
         return ResponseEntity.ok().body(
             uniqueItemService.save(uniqueItemDto)
+        )
+    }
+
+    @GetMapping("/runeword")
+    fun indexRunewords(@SearchSpec specs: Specification<Runeword>?, pageable: Pageable): Page<RunewordDto> {
+        return runewordService.findAll(specs, pageable)
+    }
+
+    @PostMapping("/runeword")
+    fun createRuneword(@RequestBody runewordDto: RunewordDto): ResponseEntity<RunewordDto> {
+        return ResponseEntity.ok().body(
+            runewordService.save(runewordDto)
         )
     }
 }
