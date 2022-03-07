@@ -1,0 +1,14 @@
+package com.d2back.service
+
+import com.d2back.dto.SetItemDto
+import com.d2back.model.SetItem
+import org.springframework.data.domain.Page
+import org.springframework.data.domain.Pageable
+import org.springframework.data.jpa.domain.Specification
+
+interface SetItemService {
+
+    fun getMaxNumber(): Int
+    fun findAll(specs: Specification<SetItem>?, pageable: Pageable): Page<SetItemDto>
+    fun save(setItemDto: SetItemDto): SetItemDto
+}

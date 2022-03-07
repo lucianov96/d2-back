@@ -9,10 +9,13 @@ data class NormalItemDto(
     val name: String,
     val type: ItemType,
     val level: Int,
-    val durability: Int,
+    val strength: Int?,
+    val dextrerity: Int?,
+    val durability: Int?,
+    val sockets: Int?,
     val characterClass: CharacterClass?,
     val difficulty: Difficulty,
     val defense: ModifierBonusDto?,
     val damage1h: ModifierBonusDto?,
-    val damage2h: ModifierBonusDto?
+    val damage2h: ModifierBonusDto?,
 )

@@ -42,8 +42,17 @@ class NormalItem {
     @Column(name = "level", updatable = true)
     var level: Int = 0
 
+    @Column(name = "strength", updatable = true)
+    var strength: Int? = null
+
+    @Column(name = "dextrerity", updatable = true)
+    var dextrerity: Int? = null
+
     @Column(name = "durability", updatable = true)
-    var durability: Int = 0
+    var durability: Int? = null
+
+    @Column(name = "sockets", updatable = true)
+    var sockets: Int? = null
 
     @Column(name = "character_class", updatable = true)
     @Enumerated(EnumType.STRING)

@@ -31,7 +31,10 @@ abstract class NormalItemMapper {
             normalItem.name,
             normalItem.type,
             normalItem.level,
+            normalItem.strength,
+            normalItem.dextrerity,
             normalItem.durability,
+            normalItem.sockets,
             normalItem.characterClass,
             normalItem.difficulty,
             modifierBonusMapper.toDto(defense),
@@ -48,11 +51,13 @@ abstract class NormalItemMapper {
         val bonuses = listOfNotNull(defenseModel, damage1hModel, damage2hModel)
 
         val normalItem = NormalItem().apply {
-            // id = normalItemDto.id
             name = normalItemDto.name
             type = normalItemDto.type
             level = normalItemDto.level
+            strength = normalItemDto.strength
+            dextrerity = normalItemDto.dextrerity
             durability = normalItemDto.durability
+            sockets = normalItemDto.sockets
             characterClass = normalItemDto.characterClass
             difficulty = normalItemDto.difficulty
         }
