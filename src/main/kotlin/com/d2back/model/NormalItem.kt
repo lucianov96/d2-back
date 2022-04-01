@@ -1,10 +1,10 @@
 package com.d2back.model
 
-import com.d2back.model.enum.CharacterClass
-import com.d2back.model.enum.Difficulty
-import com.d2back.model.enum.Difficulty.normal
-import com.d2back.model.enum.ItemType
-import com.d2back.model.enum.ItemType.crossbow
+import com.d2back.model.enums.CharacterClass
+import com.d2back.model.enums.Difficulty
+import com.d2back.model.enums.Difficulty.normal
+import com.d2back.model.enums.ItemType
+import com.d2back.model.enums.ItemType.crossbow
 import org.hibernate.annotations.DynamicUpdate
 import org.hibernate.envers.Audited
 import javax.persistence.CascadeType

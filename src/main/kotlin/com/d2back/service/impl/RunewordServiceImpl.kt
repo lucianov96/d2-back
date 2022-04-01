@@ -3,6 +3,7 @@ package com.d2back.service.impl
 import com.d2back.dto.RunewordDto
 import com.d2back.mapper.RunewordMapper
 import com.d2back.model.Runeword
+import com.d2back.model.enums.Key
 import com.d2back.repository.RunewordRepository
 import com.d2back.service.RunewordService
 import org.springframework.data.domain.Page
@@ -17,6 +18,16 @@ class RunewordServiceImpl(
 ): RunewordService {
     override fun getMaxNumber(): Int {
         return runewordRepository.getMaxNumber()
+    }
+
+    override fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<RunewordDto> {
+        return if(name != null && keys != null) {
+            runewordRepository.findAllByNameLikeAndBonuses_KeyIn("%${name}%", keys.map { Key.valueOf(it) }, pageable).map(runewordMapper::toDto)
+        } else if(name == null && keys != null) {
+            runewordRepository.findAllByBonuses_KeyIn(keys.map { Key.valueOf(it) }, pageable).map(runewordMapper::toDto)
+        } else {
+            runewordRepository.findAllByNameLike("%${name!!}%", pageable).map(runewordMapper::toDto)
+        }
     }
 
     override fun findAll(specs: Specification<Runeword>?, pageable: Pageable): Page<RunewordDto> {

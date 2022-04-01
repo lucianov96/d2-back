@@ -1,6 +1,6 @@
 package com.d2back.dto
 
-import com.d2back.model.enum.ItemType
+import com.d2back.model.enums.ItemType
 
 data class RunewordDto(
     override val id: Int,

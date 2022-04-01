@@ -1,8 +1,8 @@
 package com.d2back.dto
 
-import com.d2back.model.enum.CharacterClass
-import com.d2back.model.enum.Difficulty
-import com.d2back.model.enum.ItemType
+import com.d2back.model.enums.CharacterClass
+import com.d2back.model.enums.Difficulty
+import com.d2back.model.enums.ItemType
 
 data class NormalItemDto(
     val id: Int?,

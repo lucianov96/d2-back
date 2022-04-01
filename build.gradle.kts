@@ -43,6 +43,8 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("com.sipios:spring-search:0.2.4")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.4.1")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-jdk8:1.4.1")
 	implementation("net.minidev:json-smart:2.4.7")
 	// implementation("org.liquibase:liquibase-core:4.3.1")
 	compileOnly("io.springfox:springfox-swagger-ui:3.0.0")

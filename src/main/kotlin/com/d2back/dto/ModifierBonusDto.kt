@@ -1,6 +1,6 @@
 package com.d2back.dto
 
-import com.d2back.model.enum.ModifierType
+import com.d2back.model.enums.ModifierType
 
 data class ModifierBonusDto(
     val modifierType: ModifierType,

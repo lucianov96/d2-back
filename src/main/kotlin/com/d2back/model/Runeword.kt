@@ -1,7 +1,7 @@
 package com.d2back.model
 
-import com.d2back.model.enum.ItemType
-import com.d2back.model.enum.ItemType.amazon_bow
+import com.d2back.model.enums.ItemType
+import com.d2back.model.enums.ItemType.amazon_bow
 import org.hibernate.annotations.DynamicUpdate
 import org.hibernate.envers.Audited
 import javax.persistence.CascadeType

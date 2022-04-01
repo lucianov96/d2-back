@@ -1,7 +1,7 @@
 package com.d2back.dto
 
-import com.d2back.model.enum.BonusType
-import com.d2back.model.enum.Key
+import com.d2back.model.enums.BonusType
+import com.d2back.model.enums.Key
 
 data class BonusDto(
     val id: Int?,

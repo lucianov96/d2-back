@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.Specification
 interface UniqueItemService {
 
     fun getMaxNumber(): Int
+    fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<UniqueItemDto>
     fun findAll(specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto>
     fun save(uniqueItemDto: UniqueItemDto): UniqueItemDto
 }

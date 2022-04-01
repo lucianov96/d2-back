@@ -9,6 +9,7 @@ import org.springframework.data.jpa.domain.Specification
 interface RunewordService {
 
     fun getMaxNumber(): Int
+    fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<RunewordDto>
     fun findAll(specs: Specification<Runeword>?, pageable: Pageable): Page<RunewordDto>
     fun save(runewordDto: RunewordDto): RunewordDto
 }

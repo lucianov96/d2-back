@@ -1,6 +1,5 @@
 package com.d2back.controller
 
-import com.d2back.dto.NormalItemDto
 import com.d2back.dto.SetDto
 import com.d2back.service.SetService
 import com.sipios.springsearch.anotation.SearchSpec

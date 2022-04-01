@@ -3,8 +3,8 @@ package com.d2back.mapper
 import com.d2back.dto.ModifierBonusDto
 import com.d2back.model.*
 import com.d2back.model.Set
-import com.d2back.model.enum.values.MagicItemValue
-import com.d2back.model.enum.values.NormalItemValue
+import com.d2back.model.enums.values.MagicItemValue
+import com.d2back.model.enums.values.NormalItemValue
 import org.mapstruct.Mapper
 import org.mapstruct.NullValueCheckStrategy
 import org.mapstruct.NullValuePropertyMappingStrategy

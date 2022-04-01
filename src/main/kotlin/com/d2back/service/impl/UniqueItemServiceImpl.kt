@@ -3,6 +3,7 @@ package com.d2back.service.impl
 import com.d2back.dto.UniqueItemDto
 import com.d2back.mapper.UniqueItemMapper
 import com.d2back.model.UniqueItem
+import com.d2back.model.enums.Key
 import com.d2back.repository.UniqueItemRepository
 import com.d2back.service.UniqueItemService
 import org.springframework.data.domain.Page
@@ -17,6 +18,16 @@ class UniqueItemServiceImpl(
 ) : UniqueItemService {
     override fun getMaxNumber(): Int {
         return uniqueItemRepository.getMaxNumber()
+    }
+
+    override fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<UniqueItemDto> {
+        return if(name != null && keys != null) {
+            uniqueItemRepository.findAllByNameLikeAndBonuses_KeyIn("%${name}%", keys.map { Key.valueOf(it) }, pageable).map(uniqueItemMapper::toDto)
+        } else if(name == null && keys != null) {
+            uniqueItemRepository.findAllByBonuses_KeyIn(keys.map { Key.valueOf(it) }, pageable).map(uniqueItemMapper::toDto)
+        } else {
+            uniqueItemRepository.findAllByNameLike("%${name!!}%", pageable).map(uniqueItemMapper::toDto)
+        }
     }
 
     override fun findAll(specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto> {

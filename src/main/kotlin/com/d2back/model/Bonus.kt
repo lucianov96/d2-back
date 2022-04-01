@@ -1,8 +1,8 @@
 package com.d2back.model
 
-import com.d2back.model.enum.BonusType
-import com.d2back.model.enum.Key
-import com.d2back.model.enum.Key.cold_absorb
+import com.d2back.model.enums.BonusType
+import com.d2back.model.enums.Key
+import com.d2back.model.enums.Key.cold_absorb
 import org.hibernate.annotations.DynamicUpdate
 import org.hibernate.envers.Audited
 import javax.persistence.CascadeType
