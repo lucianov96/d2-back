@@ -6,6 +6,7 @@ import com.d2back.model.Runeword
 import com.d2back.model.enums.Key
 import com.d2back.repository.RunewordRepository
 import com.d2back.service.RunewordService
+import com.poketeammaker.exception.NotFoundException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
@@ -16,6 +17,11 @@ class RunewordServiceImpl(
     val runewordRepository: RunewordRepository,
     val runewordMapper: RunewordMapper
 ): RunewordService {
+
+    companion object {
+        const val RUNEWORD_ITEM_ENDPOINT = "/items/runeword"
+    }
+
     override fun getMaxNumber(): Int {
         return runewordRepository.getMaxNumber()
     }
@@ -32,6 +38,17 @@ class RunewordServiceImpl(
 
     override fun findAll(specs: Specification<Runeword>?, pageable: Pageable): Page<RunewordDto> {
         return runewordRepository.findAll(specs, pageable).map(runewordMapper::toDto)
+    }
+
+    override fun find(id: Int): RunewordDto {
+        return runewordMapper.toDto(
+            runewordRepository.findById(id).orElseThrow {
+                NotFoundException(
+                    endpoint = RUNEWORD_ITEM_ENDPOINT,
+                    message = "Runeword not found"
+                )
+            }
+        )
     }
 
     override fun save(runewordDto: RunewordDto): RunewordDto {

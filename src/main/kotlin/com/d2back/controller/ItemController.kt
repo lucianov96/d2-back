@@ -19,6 +19,7 @@ import org.springframework.data.jpa.domain.Specification
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
@@ -34,6 +35,34 @@ class ItemController(
     private val setItemService: SetItemService,
     private val runewordService: RunewordService,
 ) {
+
+    @GetMapping("/normal/{id}")
+    fun getNormalItem(@PathVariable id: Int): ResponseEntity<NormalItemDto> {
+        return ResponseEntity.ok().body(
+            normalItemService.find(id)
+        )
+    }
+
+    @GetMapping("/unique/{id}")
+    fun getUniqueItem(@PathVariable id: Int): ResponseEntity<UniqueItemDto> {
+        return ResponseEntity.ok().body(
+            uniqueItemService.find(id)
+        )
+    }
+
+    @GetMapping("/set/{id}")
+    fun getSetItem(@PathVariable id: Int): ResponseEntity<SetItemDto> {
+        return ResponseEntity.ok().body(
+            setItemService.find(id)
+        )
+    }
+
+    @GetMapping("/runeword/{id}")
+    fun getRuneword(@PathVariable id: Int): ResponseEntity<RunewordDto> {
+        return ResponseEntity.ok().body(
+            runewordService.find(id)
+        )
+    }
 
     @GetMapping("/normal")
     fun indexNormalItems(@SearchSpec specs: Specification<NormalItem>?, pageable: Pageable): Page<NormalItemDto> {

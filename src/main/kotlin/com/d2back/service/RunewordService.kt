@@ -11,5 +11,6 @@ interface RunewordService {
     fun getMaxNumber(): Int
     fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<RunewordDto>
     fun findAll(specs: Specification<Runeword>?, pageable: Pageable): Page<RunewordDto>
+    fun find(id: Int): RunewordDto
     fun save(runewordDto: RunewordDto): RunewordDto
 }

@@ -11,5 +11,6 @@ interface SetItemService {
     fun getMaxNumber(): Int
     fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<SetItemDto>
     fun findAll(specs: Specification<SetItem>?, pageable: Pageable): Page<SetItemDto>
+    fun find(id: Int): SetItemDto
     fun save(setItemDto: SetItemDto): SetItemDto
 }

@@ -11,5 +11,6 @@ interface UniqueItemService {
     fun getMaxNumber(): Int
     fun findByNameLikeAndKeysIn(name: String?, keys: List<String>?, pageable: Pageable): Page<UniqueItemDto>
     fun findAll(specs: Specification<UniqueItem>?, pageable: Pageable): Page<UniqueItemDto>
+    fun find(id: Int): UniqueItemDto
     fun save(uniqueItemDto: UniqueItemDto): UniqueItemDto
 }

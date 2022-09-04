@@ -37,7 +37,7 @@ class Bonus {
 
     @Column(name = "bonus_type", updatable = true)
     @Enumerated(EnumType.STRING)
-    var bonusType: BonusType = BonusType.unique
+    var bonusType: BonusType = BonusType.magic
 
     @ManyToOne
     @JoinColumn(name = "id_set_item", referencedColumnName = "id_item", nullable = true, updatable = false)

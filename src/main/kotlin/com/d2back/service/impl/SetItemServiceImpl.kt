@@ -6,6 +6,7 @@ import com.d2back.model.SetItem
 import com.d2back.model.enums.Key
 import com.d2back.repository.SetItemRepository
 import com.d2back.service.SetItemService
+import com.poketeammaker.exception.NotFoundException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
@@ -16,6 +17,11 @@ class SetItemServiceImpl(
     val setItemRepository: SetItemRepository,
     val setItemMapper: SetItemMapper
 ): SetItemService {
+
+    companion object {
+        const val SET_ITEM_ENDPOINT = "/items/set"
+    }
+
     override fun getMaxNumber(): Int {
         return setItemRepository.getMaxNumber()
     }
@@ -32,6 +38,17 @@ class SetItemServiceImpl(
 
     override fun findAll(specs: Specification<SetItem>?, pageable: Pageable): Page<SetItemDto> {
         return setItemRepository.findAll(Specification.where(specs), pageable).map(setItemMapper::toDto)
+    }
+
+    override fun find(id: Int): SetItemDto {
+        return setItemMapper.toDto(
+            setItemRepository.findById(id).orElseThrow {
+                NotFoundException(
+                    endpoint = SET_ITEM_ENDPOINT,
+                    message = "Set item not found"
+                )
+            }
+        )
     }
 
     override fun save(setItemDto: SetItemDto): SetItemDto {
