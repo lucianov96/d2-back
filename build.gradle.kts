@@ -57,11 +57,14 @@ dependencies {
     kapt("org.springframework.boot:spring-boot-configuration-processor")
 
     // Test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.restdocs:spring-restdocs-mockmvc")
     testImplementation("io.mockk:mockk:1.12.2")
     testImplementation("io.kotest:kotest-runner-junit5:5.0.3")
     testImplementation("io.kotest:kotest-assertions-core:5.0.3")
+    testImplementation("com.ninja-squad:springmockk:3.1.1")
+    testImplementation("org.springframework.boot:spring-boot-starter-test") {
+        exclude(module = "mockito-core")
+    }
 }
 
 extra["springCloudVersion"] = "2020.0.1"
