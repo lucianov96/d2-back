@@ -6,7 +6,7 @@ import com.d2back.model.SetItem
 import com.d2back.model.enums.Key
 import com.d2back.repository.SetItemRepository
 import com.d2back.service.SetItemService
-import com.poketeammaker.exception.NotFoundException
+import com.d2back.error.NotFoundException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification

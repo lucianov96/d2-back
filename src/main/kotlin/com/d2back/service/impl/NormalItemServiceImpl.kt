@@ -5,7 +5,7 @@ import com.d2back.mapper.NormalItemMapper
 import com.d2back.model.NormalItem
 import com.d2back.repository.NormalItemRepository
 import com.d2back.service.NormalItemService
-import com.poketeammaker.exception.NotFoundException
+import com.d2back.error.NotFoundException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification

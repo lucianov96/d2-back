@@ -1,7 +1,5 @@
 package com.d2back.model
 
-import org.hibernate.annotations.DynamicUpdate
-import org.hibernate.envers.Audited
 import javax.persistence.CascadeType
 import javax.persistence.Entity
 import javax.persistence.JoinColumn
@@ -13,8 +11,6 @@ import javax.persistence.Table
     name = "unique_item",
 )
 @Entity
-@Audited
-@DynamicUpdate
 class UniqueItem : MagicItem() {
 
     @OneToOne

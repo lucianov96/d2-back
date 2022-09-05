@@ -5,8 +5,6 @@ import com.d2back.model.enums.Difficulty
 import com.d2back.model.enums.Difficulty.normal
 import com.d2back.model.enums.ItemType
 import com.d2back.model.enums.ItemType.crossbow
-import org.hibernate.annotations.DynamicUpdate
-import org.hibernate.envers.Audited
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -23,8 +21,6 @@ import javax.persistence.Table
     name = "normal_item",
 )
 @Entity
-@Audited
-@DynamicUpdate
 class NormalItem {
 
     @Id

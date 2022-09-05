@@ -7,11 +7,7 @@ spring:
     active: ${ENVIRONMENT:dev}
   main:
     allow-bean-definition-overriding: true
-  kafka:
-    bootstrap-servers: ${GLOBAL_KAFKA_HOST_PLAIN:localhost:9092}
-    consumer:
-      bootstrap-servers: ${GLOBAL_KAFKA_HOST_PLAIN:localhost:9092}
-      group-id: ${MS_NAME:d2back}
+    allow-circular-references: true
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://${FAMILY_POSTGRES_HOST:localhost}:5432/${MS_NAME:postgres}
@@ -33,9 +29,6 @@ spring:
           envers:
             default_schema: public
             store_dataAt_delete: true
-  liquibase:
-    change-log: classpath:liquibase/liquibase-changelog.yml
-    enabled: false
   output:
     ansi:
       enabled: ALWAYS

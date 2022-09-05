@@ -3,8 +3,6 @@ package com.d2back.model
 import com.d2back.model.enums.BonusType
 import com.d2back.model.enums.Key
 import com.d2back.model.enums.Key.cold_absorb
-import org.hibernate.annotations.DynamicUpdate
-import org.hibernate.envers.Audited
 import javax.persistence.CascadeType
 import javax.persistence.Column
 import javax.persistence.Entity
@@ -20,8 +18,6 @@ import javax.persistence.Table
     name = "bonus",
 )
 @Entity
-@Audited
-@DynamicUpdate
 class Bonus {
 
     @Id

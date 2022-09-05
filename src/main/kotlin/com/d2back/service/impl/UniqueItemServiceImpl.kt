@@ -6,12 +6,11 @@ import com.d2back.model.UniqueItem
 import com.d2back.model.enums.Key
 import com.d2back.repository.UniqueItemRepository
 import com.d2back.service.UniqueItemService
-import com.poketeammaker.exception.NotFoundException
+import com.d2back.error.NotFoundException
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
 import org.springframework.stereotype.Service
-import java.util.function.Supplier
 
 @Service
 class UniqueItemServiceImpl(

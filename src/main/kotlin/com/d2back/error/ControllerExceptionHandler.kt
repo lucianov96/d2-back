@@ -1,7 +1,6 @@
 package com.d2back.error
 
 import com.poketeammaker.exception.ApiError
-import com.poketeammaker.exception.NotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ControllerAdvice
