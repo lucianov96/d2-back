@@ -1,0 +1,68 @@
+{
+  "name": "Forma Grisacea",
+  "level": 7,
+  "normal_item": {
+    "id": 1,
+    "name": "Armadura Acolchada",
+    "type": "armor",
+    "level": 0,
+    "durability": 20,
+    "character_class": null,
+    "difficulty": "normal",
+    "defense": {
+      "modifier_type": "range",
+      "between_value1": 8,
+      "between_value2": 11
+    }
+  },
+  "bonuses": [
+    {
+      "key": "defense",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 20
+      }
+    },
+    {
+      "key": "life_stolen_per_hit",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 5
+      }
+    },
+    {
+      "key": "magic_damage_reduced_by",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 3
+      }
+    },
+    {
+      "key": "cold_resistance",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 20
+      }
+    },
+    {
+      "key": "fire_resistance",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 20
+      }
+    },
+    {
+      "key": "dextrerity",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 10
+      }
+    }
+  ]
+}

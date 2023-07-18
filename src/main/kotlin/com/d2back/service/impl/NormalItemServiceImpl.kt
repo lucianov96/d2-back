@@ -37,6 +37,7 @@ class NormalItemServiceImpl(
     }
 
     override fun save(normalItemDto: NormalItemDto): NormalItemDto {
+        println(normalItemMapper.toModel(normalItemDto).toString())
         val normalItem = normalItemRepository.save(
             normalItemMapper.toModel(normalItemDto)
         )

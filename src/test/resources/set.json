@@ -1,0 +1,55 @@
+{
+  "name": "Vestiduras Angelicales",
+  "bonuses": [
+    {
+      "key": "dextrerity",
+      "bonus_type": "complete_set",
+      "objects": 2,
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 10
+      }
+    },
+    {
+      "key": "mana",
+      "bonus_type": "complete_set",
+      "objects": 3,
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 50
+      }
+    },
+    {
+      "key": "half_freeze_duration",
+      "bonus_type": "complete_set",
+      "objects": 4
+    },
+    {
+      "key": "all_resistance",
+      "bonus_type": "complete_set",
+      "objects": 4,
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 25
+      }
+    },
+    {
+      "key": "chance_of_getting_magic_items",
+      "bonus_type": "complete_set",
+      "objects": 4,
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 40
+      }
+    },
+    {
+      "key": "regenerate_mana",
+      "bonus_type": "complete_set",
+      "objects": 4,
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 8
+      }
+    }
+  ]
+}

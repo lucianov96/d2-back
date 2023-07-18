@@ -1,0 +1,51 @@
+{
+  "name": "Manto angelical",
+  "level": 12,
+  "normal_item": {
+    "id": 5,
+    "name": "Cota de Malla de Anillas",
+    "type": "armor",
+    "difficulty": "normal"
+  },
+  "set": {
+    "id": 1,
+    "name": "",
+    "bonuses": []
+  },
+  "bonuses": [
+    {
+      "key": "enhanced_defense",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 40
+      }
+    },
+    {
+      "key": "damage_reduced_by",
+      "bonus_type": "unique",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 3
+      }
+    },
+    {
+      "key": "defense",
+      "objects": 2,
+      "bonus_type": "set",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 150
+      }
+    },
+    {
+      "key": "fire_resistance",
+      "objects": 3,
+      "bonus_type": "set",
+      "bonus1": {
+        "modifier_type": "absolute",
+        "absolute_int_value": 50
+      }
+    }
+  ]
+}

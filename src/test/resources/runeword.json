@@ -1,0 +1,48 @@
+{
+    "name": "Promesa de los ancianos",
+    "level": 21,
+    "type": "shield",
+    "runes": "Ral-Ort-Tal",
+    "bonuses": [
+        {
+            "key": "enhanced_defense",
+            "bonus_type": "unique",
+            "bonus1": {
+                "modifier_type": "absolute",
+                "absolute_int_value": 50
+            }
+        },
+        {
+            "key": "cold_resistance",
+            "bonus_type": "unique",
+            "bonus1": {
+                "modifier_type": "absolute",
+                "absolute_int_value": 43
+            }
+        },
+        {
+            "key": "fire_resistance",
+            "bonus_type": "unique",
+            "bonus1": {
+                "modifier_type": "absolute",
+                "absolute_int_value": 48
+            }
+        },
+        {
+            "key": "lighting_resistance",
+            "bonus_type": "unique",
+            "bonus1": {
+                "modifier_type": "absolute",
+                "absolute_int_value": 48
+            }
+        },
+        {
+            "key": "poison_resistance",
+            "bonus_type": "unique",
+            "bonus1": {
+                "modifier_type": "absolute",
+                "absolute_int_value": 48
+            }
+        }
+    ]
+}

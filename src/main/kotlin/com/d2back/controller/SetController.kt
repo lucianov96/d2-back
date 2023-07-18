@@ -6,6 +6,7 @@ import com.sipios.springsearch.anotation.SearchSpec
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Pageable
 import org.springframework.data.jpa.domain.Specification
+import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.validation.annotation.Validated
 import org.springframework.web.bind.annotation.GetMapping
@@ -23,8 +24,9 @@ class SetController(
 
     @PostMapping
     fun createSet(@RequestBody setDto: SetDto): ResponseEntity<SetDto> {
-        return ResponseEntity.ok().body(
-            setService.save(setDto)
+        return ResponseEntity(
+            setService.save(setDto),
+            HttpStatus.CREATED
         )
     }
 

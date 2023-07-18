@@ -22,4 +22,16 @@ class ControllerExceptionHandler {
         return ResponseEntity(error, HttpStatus.NOT_FOUND)
     }
 
+    @ExceptionHandler(value = [(BadRequestException::class)])
+    fun handleBadRequestException(e: BadRequestException): ResponseEntity<ApiError> {
+        val error = ApiError(
+            UUID.randomUUID(),
+            e.endpoint,
+            HttpStatus.NOT_FOUND.value(),
+            HttpStatus.NOT_FOUND.name,
+            e.message ?: ""
+        )
+        return ResponseEntity(error, HttpStatus.BAD_REQUEST)
+    }
+
 }
